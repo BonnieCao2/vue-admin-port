@@ -1,0 +1,83 @@
+<template>
+<div>
+  <div id="wrap">
+    <span id="last" @click="lastMon">&lt;</span>
+    <input id="date" :value="dateTime"/>
+    <span id="next" @click="nextMon">></span>
+  </div>
+</div>
+</template>
+
+<script>
+export default {
+  name: "date",
+  data () {
+    return {
+      dateTime : '',
+      dateMonthEn : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
+    }
+  },
+  mounted () {
+    let date = new Date()
+    this.dateTime = this.dateMonthEn[date.getMonth()] + '-' + date.getFullYear()
+    return this.dateTime
+  },
+  watch: {
+    dateTime(val, oldVal){
+      // console.log("dateTime: "+val, oldVal);
+    },
+  },
+  computed : {
+
+  },
+  methods : {
+    lastMon () {
+      let LastOpeMon = this.dateTime.split('-')[0]
+      let lastIndex = this.dateMonthEn.indexOf(LastOpeMon)
+      let date = new Date()
+      if(lastIndex != 0){
+        this.dateTime = this.dateMonthEn[lastIndex-1] + '-' + date.getFullYear()
+      }else if(lastIndex == 0){
+        this.dateTime = this.dateMonthEn[11] + '-' + (date.getFullYear() - 1)
+      }
+
+    },
+    nextMon () {
+      let LastOpeMon = this.dateTime.split('-')[0]
+      let lastIndex = this.dateMonthEn.indexOf(LastOpeMon)
+      let date = new Date()
+      if(lastIndex != 11){
+        this.dateTime = this.dateMonthEn[lastIndex+1] + '-' + date.getFullYear()
+      }else if(lastIndex == 11){
+        this.dateTime = this.dateMonthEn[0] + '-' + (date.getFullYear() + 1)
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+#wrap{
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  line-height: 20px;
+}
+  #last,#next{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #6E747F;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+  }
+  #date{
+    display: inline-block;
+    width: 80px;
+    height: 20px;
+    color: #333;
+    border: 0;
+  }
+
+</style>

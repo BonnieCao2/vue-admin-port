@@ -1,0 +1,148 @@
+<template>
+    <div>
+      <div class="exchangeId" >{{chartData.exchangeId}}</div>
+      <progressChart :chartData="chartData"></progressChart>
+      <div class="timeWrap">
+        <div class="timeLeft">
+          <div class="timeTitle">Return Efficiency</div>
+          <div class="timeContent">
+            <div class="minute">
+              <div class="minuteTitle">MINUTES</div>
+              <div class="minuteNum">04</div><!--{{returnData.min}}-->
+            </div>
+            <div class="minute">
+              <div class="minuteTitle">SECONDS</div>
+              <div class="minuteNum">59</div><!--{{returnData.sec}}-->
+            </div>
+          </div>
+        </div>
+        <div class="timeLeft">
+          <div class="timeTitle">Collection Efficiency</div>
+          <div class="timeContent">
+            <div class="minute">
+              <div class="minuteTitle">MINUTES</div>
+              <div class="minuteNum">04</div><!--{{collectData.min}}-->
+            </div>
+            <div class="minute">
+              <div class="minuteTitle">SECONDS</div>
+              <div class="minuteNum">59</div><!--{{collectData.sec}}-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Throughput">
+        <!--<gaugeChart :gaugeData="gaugeData"></gaugeChart>-->
+      </div>
+    </div>
+</template>
+
+<script>
+  import progressChart from './progressChart'
+  import gaugeChart from './gaugeChart'
+    export default {
+      name: "exchange",
+      components: {
+        progressChart,
+        gaugeChart
+      },
+      props: {
+        chartData: {
+          id: String,
+          div: {
+            style: {
+              width: String,
+              height: String,
+            }
+          },
+          data1: Array,
+          data2: Array,
+
+          exchangeId: String,
+          returnData: {
+            min: String,
+            sec: String
+          },
+          collectData: {
+            min: String,
+            sec: String
+          }
+        }
+      },
+      data () {
+        return {
+          gaugeData: {
+            chartId: '',
+            style: {
+              width: '',
+              height: ''
+            },
+            max: '',
+            dataValue: ''
+          }
+        }
+      },
+      mounted () {
+        this.gaugeData = {
+          chartId: 'gauge1',
+          style: {
+            width: '100%',
+            height: '100%'
+          },
+          max: '200',
+          dataValue: '150'
+        }
+      }
+    }
+</script>
+
+<style scoped>
+  .exchangeId{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    background-color: #fff;
+  }
+  .timeWrap{
+    width: 100%;
+    height: 30%;
+    background-color: #fff;
+  }
+  .timeWrap>div{
+    float: left;
+    width: 50%;
+    padding: 5%;
+  }
+  .timeTitle{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 5%;
+    color: #333;
+    font-size: 16px;
+  }
+  .timeContent{
+    width: 100%;
+    height: 92%;
+    font-size: 54px;
+  }
+  .timeContent>div{
+    float: left;
+    width: 50%;
+    background-color: #333;
+    color: #e0e0e0;
+    text-align: center;
+  }
+  .minuteTitle{
+    height: 20px;
+    font-size: 14PX;
+    line-height: 20px;
+  }
+  .Throughput{
+    width: 100%;
+    height: 30%;
+    background-color: #fff;
+  }
+</style>

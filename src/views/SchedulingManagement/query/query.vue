@@ -1,0 +1,296 @@
+<template>
+  <div><!--Query page-->
+    <div class="wrap">
+      <datePicker class="datePicker"></datePicker>
+      <inputBox1 class="input" :inputName = "inputName1" :inputBox = "input1"></inputBox1>
+      <inputBox2 class="input" :inputName = "inputName2" :inputBox = "input2"></inputBox2>
+      <dropDown1 class="dropDown" :dropDownName = "dropDownName1" :options = "options1"></dropDown1>
+      <dropDown2 class="dropDown" :dropDownName = "dropDownName2" :options = "options2"></dropDown2>
+      <inputBox1 class="input" :inputName = "inputName1" :inputBox = "input1"></inputBox1>
+      <inputBox2 class="input" :inputName = "inputName2" :inputBox = "input2"></inputBox2>
+      <dropDown3 class="dropDown" :dropDownName = "dropDownName3" :options = "options3"></dropDown3>
+      <searchBtn class="searchBtn"></searchBtn>
+    </div>
+    <!--<tableBox1></tableBox1>-->
+    <div class="tableWrap">
+      <t1 id="t1" :tableData="t1data"></t1>
+    </div>
+  </div>
+</template>
+
+<script>
+/* eslint-disable */
+import datePicker from '@/components/DateSelect/datePicker'
+import dropDown1 from '@/components/DropDown/dropDown'
+import dropDown2 from '@/components/DropDown/dropDown'
+import dropDown3 from '@/components/DropDown/dropDown'
+import dropDown4 from '@/components/DropDown/dropDown'
+import dropDown5 from '@/components/DropDown/dropDown'
+import inputBox1 from '@/components/Input/inputBox'
+import inputBox2 from '@/components/Input/inputBox'
+import dropDown6 from '@/components/DropDown/dropDown'
+import dropDown7 from '@/components/DropDown/dropDown'
+import dropDown8 from '@/components/DropDown/dropDown'
+import dropDown9 from '@/components/DropDown/dropDown'
+import searchBtn from '@/components/Button/btn'
+// import tableBox1 from '@/components/Table/table'
+import t1 from './components/t1'
+
+export default {
+  name: "query",
+  components: {
+    datePicker,
+    dropDown1,
+    dropDown2,
+    dropDown3,
+    dropDown4,
+    dropDown5,
+    inputBox1,
+    inputBox2,
+    dropDown6,
+    dropDown7,
+    dropDown8,
+    dropDown9,
+    searchBtn,
+    // tableBox1,
+    t1,
+  },
+  data () {
+    return {
+      dropDownName1: 'Exchange',
+      options1: [{
+        value: 'EXCHANGE 1',
+        label: 'EXCHANGE 1'
+      }, {
+        value: 'EXCHANGE 2',
+        label: 'EXCHANGE 2'
+      }, {
+        value: 'EXCHANGE 3',
+        label: 'EXCHANGE 3'
+      }],
+      dropDownName2: 'Business Type',
+      options2: [{
+        value: 'Return',
+        label: 'Return'
+      }, {
+        value: 'Collection',
+        label: 'Collection'
+      }],
+
+      dropDownName3: 'Status',
+      options3: [{
+        value: 'Pending',
+        label: 'Pending'
+      }, {
+        value: 'Executing ',
+        label: 'Executing '
+      }, {
+        value: 'Executed ',
+        label: 'Executed '
+      }, {
+        value: 'Completed ',
+        label: 'Completed '
+      }, {
+        value: 'Expired ',
+        label: 'Expired '
+      }],
+
+
+      inputName1: 'Vehicle Nos',
+      input1: '',
+      inputName2: 'Container Nos',
+      input2: '',
+
+      t1data:[{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      },{
+        Status: 'Executing',
+        Exchange: 'Exchange 4',
+        BusinessType: 'Return',
+        VehicleNos: 'XE6014D',
+        ContainerNos: 'TCLU1868238',
+        ContainerStatus: 'AV、WASHING',
+        Roadway: '1',
+        OperationTime: '1-',
+        BeginingTime: '2018/06/08 08:00:00',
+        EndingTime: '2018/06/08 16:00:00',
+        Unit: 'Unit-1',
+        Block: 'Block-1',
+        Slot: '1',
+        Row: '2',
+        Tier: '6',
+      }],
+
+    }
+  },
+  mounted () {
+
+  }
+}
+</script>
+
+<style scoped>
+  .wrap:before,.wrap:after {
+    content: "";
+    display: block;
+    clear: both;
+    margin-bottom: 10px;
+  }
+  .datePicker{
+    float: left;
+    margin-top: 18px;
+    margin-right: 15px;
+  }
+  .dropDown{
+    float: left;
+    margin-right: 15px;
+    width: 120px;
+  }
+  .input{
+    display: block;
+    float: left;
+    margin-right: 15px;
+    width: 120px;
+  }
+  .searchBtn{
+    float: left;
+    margin-top: 18px;
+    margin-left: 20px;
+  }
+  .tableWrap{
+    width: 100%;
+    height: 700px;
+  }
+  #t1{
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+
+</style>

@@ -1,0 +1,100 @@
+<template>
+  <div>
+    <div class="block">
+      <span v-show="false" class="demonstration">{{value6}}</span>
+      <!--{{value6}}-->
+      <el-date-picker
+        v-model="value6"
+        type="daterange"
+        range-separator=">"
+        :start-placeholder="$t('components.datePicker.fromDate')"
+        :end-placeholder="$t('components.datePicker.toDate')"
+        value-format="yyyy-MM-dd"
+      >
+      </el-date-picker>
+      <!--<div>{{$t('components.datePicker.fromDate')}}{{$t('components.datePicker.toDate')}}</div>-->
+    </div>
+    <!--<div class="block">
+      &lt;!&ndash;<span class="demonstration">带快捷选项</span>&ndash;&gt;
+      <el-date-picker
+        v-model="value7"
+        type="daterange"
+        align="right"
+        unlink-panels
+        range-separator=""
+        start-placeholder="From Date"
+        end-placeholder="To Date"
+        :picker-options="pickerOptions2">
+      </el-date-picker>
+    </div>-->
+  </div>
+</template>
+
+<script>
+/*
+import English from '@/lang/en.js'
+import Chinese from '@/lang/zh.js'
+
+const datePicker = 'components.datePicker'
+*/
+
+export default {
+  name: "date-picker",
+  data() {
+    return {
+      /*dateStart: $t('components.datePicker.fromDate'),
+      dataEnd: $t('components.datePicker.toDate'),*/
+      pickerOptions2: {
+        shortcuts: [{
+          text: '最近一周',
+          onClick(picker) {
+            const end = new Date();
+            const start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+            picker.$emit('pick', [start, end]);
+          }
+        }, {
+          text: '最近一个月',
+          onClick(picker) {
+            const end = new Date();
+            const start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+            picker.$emit('pick', [start, end]);
+          }
+        }, {
+          text: '最近三个月',
+          onClick(picker) {
+            const end = new Date();
+            const start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+            picker.$emit('pick', [start, end]);
+          }
+        }]
+      },
+      value6: '',
+      value7: ''
+    };
+  },
+/*  created() {
+    if (!this.$i18n.getLocaleMessage('en')[datePicker]) {
+      this.$i18n.mergeLocaleMessage('en', English)
+      this.$i18n.mergeLocaleMessage('zh', Chinese)
+    }
+  },*/
+  mounted () {
+    this.$nextTick( ()=> {
+      console.log(this.pickerOptions2.value6)
+    })
+  },
+  watch: {
+    value6 (curVal,oldVal) {
+      // console.log(curVal);
+      this.$emit('timeSelect',curVal)
+    },
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

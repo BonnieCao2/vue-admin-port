@@ -1,0 +1,168 @@
+<template>
+    <div>
+      <!--<el-progress :text-inside="true" :stroke-width="18" :percentage="80" color="#97BFFF"></el-progress>
+      <el-progress :text-inside="true" :stroke-width="18" :percentage="50" color="#E7BDF3"></el-progress>-->
+      <div ref="dom" :id="chartData.id" :style="chartData.div.style"></div>
+    </div>
+</template>
+
+<script>
+  import echarts from 'echarts'
+  import resize from '@/utils/resizeEcharts'
+    export default {
+      name: "progress-chart",
+      mixins: [resize],
+      props: {
+        chartData: {
+          id: String,
+          div: {
+            style: {
+              width: String,
+              height: String,
+            }
+          },
+          data1: Array,
+          data2: Array
+        }
+      },
+      data () {
+        return {
+          myChart: '',
+          option: {},
+        }
+      },
+      mounted () {
+        this.$nextTick( ()=> {
+          // console.log(this.$refs.dom.getAttribute('id'))
+          this.initChart ()
+        })
+
+      },
+      methods: {
+        initChart () {
+          // var data1 = [239213, 342101, 0, 124444, 314284];
+          // var data1Max = Math.max.apply(Math, data1);
+          // var data2 = [];
+          // for (var i = 0; i < data1.length; i++) {
+          //   data2.push(data1Max * 1.2)
+          // }
+          let _this = this;
+          this.myChart = echarts.init(document.getElementById(this.$refs.dom.getAttribute('id')));
+          this.option = {
+            backgroundColor: '#fff',
+            grid: {
+              left: '5%',
+              top: '5%',
+              bottom: '3%',
+              right: '15%',
+              containLabel: true
+            },
+            legend: {
+              show: false
+            },
+
+            xAxis: {
+              splitLine: {
+                show: false
+              },
+              axisTick: {
+                show: false
+              },
+              axisLine: {
+                show: false
+              },
+              axisLabel: {
+                show: false,
+              }
+            },
+            yAxis: {
+              splitLine: {
+                show: false
+              },
+              axisTick: {
+                show: false
+              },
+              axisLine: {
+                show: false
+              },
+              axisLabel: {
+                color: '#333',
+                fontSize: 14,
+                // show: false
+              },
+              data: ['Pending/Hold', 'Executed'],
+            },
+            series: [{
+              type: 'bar',
+              barGap: '-100%',
+              barWidth: 12,
+              itemStyle: {
+                normal: {
+                  color: new echarts.graphic.LinearGradient(
+                    1, 0, 0, 0, [{
+                      offset: 1,
+                      color: '#e0e0e0'
+                    },
+                      {
+                        offset: 0.5,
+                        color: '#97BFFF'
+                      },
+                      {
+                        offset: 0,
+                        color: '#E791D1'
+                      },
+                    ]
+                  ),
+                  barBorderRadius: 12
+                }
+              },
+              /*  label: {
+                    normal: {
+                        show: true,
+                        position: 'right',
+                        fontSize: 32,
+                        color: '#ffffff'
+                    }
+                },*/
+              z: -10,
+              data: this.chartData.data1
+            }, {
+              type: 'bar',
+              barGap: '-100%',
+              barWidth: 12,
+              itemStyle: {
+                normal: {
+                  color: '#fff',
+                  // borderColor: 'rgba(255,255,255,0.5)',
+                  borderWidth: 2,
+                  shadowColor: '#333',
+                  shadowBlur: 10,
+                  barBorderRadius: 12
+                }
+              },
+              label: {
+                normal: {
+                  show: true,
+                  position: 'right',
+                  fontSize: 14,
+                  color: '#333',
+                  // offset: [80, 0],
+                  formatter: function(params) {
+                    return _this.chartData.data1[params.dataIndex] === 0 ? '-' : _this.chartData.data1[params.dataIndex]
+                  }
+                }
+              },
+              z: -12,
+              data: this.chartData.data2
+            }]
+          };
+          this.myChart.setOption(this.option);
+          this.myChart.resize()
+        }
+      }
+    }
+</script>
+
+<style scoped>
+
+</style>
