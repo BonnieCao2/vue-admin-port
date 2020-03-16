@@ -1,0 +1,1 @@
+webpackJsonp([35],{vEFv:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement,n=this._self._c||e;return n("transition",{attrs:{name:"fade",mode:"out-in"}},[n("router-view")],1)},staticRenderFns:[]},i=t("VU/8")({name:"PermissionMain"},r,!1,null,null,null);n.default=i.exports}});
